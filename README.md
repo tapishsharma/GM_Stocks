@@ -1,6 +1,3 @@
-# GM_Stocks
-
-
 Problem Statemnt
 Price Table
 col1 > symbol
@@ -122,4 +119,80 @@ similar_stocks(stock_name)
 {
 	return list of stocks that show simialr moment to that stock_name;
 }
+
+
+---------------------------------------------------------------------------------------------------
+Web Scrapper
+
+
+get_concol(symbol)
+{
+	return last_four
+}
+
+get_anual_report(symbol)
+{
+	return last_four
+}
+
+get_news(symbol)
+{
+	returns the news of that stocks
+}
+
+get_news()
+{
+	return the genral news of what is happening
+}
+
+get_results()
+{
+	
+}
+
+get_dividents()
+{
+	
+}
+
+get_ipos()
+{
+	
+}
+
+get_mergers()
+{
+	
+}
+
+get_demerger()
+{
+	
+}
+
+----------------------------------------------------------------------------------------------------
+NLP
+
+analaze_anual_report(pdf)
+{
+	return summary
+}
+
+analaze_diff_anual_report(pdf,pdf)
+{
+	return dif_summary
+}
+
+analaze_concol(pdf)
+{
+	return summary
+}
+
+
+---------------------------------------------------------------------------------------------------------
+Charts (web interface)
+
+Plot charts() //drwable chart 
+
+
 
