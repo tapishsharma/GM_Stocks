@@ -9,7 +9,7 @@ def convert_to_datetime(date_str):
 # Create an empty DataFrame to store the merged data
 merged_df = pd.DataFrame()
 
-# Use the glob module to get a list of all the CSV files in the csv_files folder
+# Use the glob module to get a list of all the CSV files in the csv_files folde
 file_list = glob.glob('csv_files/cm*.csv')
 
 # Loop through each file, read it into a DataFrame, and merge it with the merged_df
