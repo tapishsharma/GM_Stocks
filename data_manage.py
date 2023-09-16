@@ -1,22 +1,37 @@
 import pandas as pd
-import glob
-from datetime import datetime
+import os
 
-# Define a function to convert the date strings to datetime objects
-def convert_to_datetime(date_str):
-    return datetime.strptime(date_str, '%d%b%Y')
+# Create an empty dictionary to store data frames
+data_frames = {}
 
-# Create an empty DataFrame to store the merged data
-merged_df = pd.DataFrame()
+# Directory containing the CSV files
+directory = 'csv_files'
 
-# Use the glob module to get a list of all the CSV files in the csv_files folder
-file_list = glob.glob('csv_files/cm*.csv')
+# Iterate through files in the directory
+for filename in os.listdir(directory):
+    if filename.endswith(".csv"):
+        file_path = os.path.join(directory, filename)
+        
+        # Read the CSV file into a DataFrame
+        df = pd.read_csv(file_path)
+        
+        # Extract the 'SYMBOL' and 'CLOSE' columns and rename 'CLOSE' to the filename
+        df = df[['SYMBOL', 'CLOSE']]
+        df.rename(columns={'CLOSE': filename}, inplace=True)
+        
+        # Store the DataFrame in the dictionary with the filename as the key
+        data_frames[filename] = df
 
-# Loop through each file, read it into a DataFrame, and merge it with the merged_df
-for file in file_list:
-    df = pd.read_csv(file)
-    df['close'] = df['close'].apply(convert_to_datetime)  # Convert close column to datetime
-    merged_df = pd.merge(merged_df, df, on='symbol', how='outer')
+# Merge all DataFrames on the 'SYMBOL' column
+merged_df = None
+for key, df in data_frames.items():
+    if merged_df is None:
+        merged_df = df
+    else:
+        merged_df = pd.merge(merged_df, df, on='SYMBOL', how='outer')
 
-# Save the merged data to a new CSV file
-merged_df.to_csv('merged_data.csv', index=False)
+# Replace NaN values with an empty string
+merged_df.fillna('', inplace=True)
+
+# Save the merged DataFrame to a CSV file
+merged_df.to_csv('merged_output.csv', index=False)
