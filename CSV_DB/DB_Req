@@ -1,0 +1,11 @@
+* We can add any thime any file of a particular date
+* We will have one unique for that file there no two colmoums of that particular date
+* We must be able to have new stocks 
+
+
+Data_Cleaning
+
+We must have a procedure to clean the data
+there are few stocks which are not trded in between
+there are new stocks
+there is delisting as well
