@@ -1,6 +1,16 @@
 Certainly! Here's the README.md file with the code snippets included for the API and License Functions sections:
 
-# Project Name
+# Grand Master of Stocks
+
+## Overview
+
+This repository serves as a hub for various tools, data, and scripts related to stock analysis. It includes a wide range of resources, such as:
+
+- **Stock Data**: Historical stock price data, annual reports, quarterly reports, and more.
+- **Technical Analysis Strategies**: A collection of technical analysis scripts and strategies to analyze stock data.
+- **Natural Language Processing (NLP)**: Scripts and models for sentiment analysis and text analysis related to stock news and reports.
+- **Chart Drawing**: Utilities for creating visually informative charts and visualizations.
+- **Utility Functions**: A set of utility functions and tools to assist with various aspects of stock analysis.
 
 ## Problem Statement
 
