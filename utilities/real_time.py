@@ -1,0 +1,1 @@
+#Add real time price couln in betwwen running market for better analysis

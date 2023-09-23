@@ -1,0 +1,1 @@
+# detele all the saved charts in charts folder
