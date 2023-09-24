@@ -1,6 +1,6 @@
 import pandas as pd
 
-def process_csv(input_csv_file, output_csv_file, num_days):
+def momentum_genric_simple(input_csv_file, output_csv_file, num_days):
     try:
         # Read the input CSV file into a DataFrame
         df = pd.read_csv(input_csv_file)
@@ -33,7 +33,7 @@ num_days = int(input("Enter the number of days: "))
 # Specify the desired output CSV file name
 output_csv_file = "result.csv"
 
-if process_csv(input_csv_file, output_csv_file, num_days):
+if momentum_genric_simple(input_csv_file, output_csv_file, num_days):
     print(f"Sorted data saved to {output_csv_file}.")
 else:
     print("Error processing the CSV file.")
