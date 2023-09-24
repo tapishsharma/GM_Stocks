@@ -1,7 +1,3 @@
-# days1 = int(input("Enter the value for days1: "))
-# days2 = int(input("Enter the value for days2: "))
-# percentage_threshold = float(input("Enter the percentage threshold: "))
-
 import csv
 import os
 import pandas as pd
@@ -11,10 +7,11 @@ input_file = os.path.join('..', 'stock_data.csv')
 output_file = os.path.join('result.csv')
 
 # User-defined parameters
-days1 = 10
-days2 = 20
-percentage_threshold_1 = 0.005
-percentage_threshold_2 = 0.015
+days1 = int(input("Enter the value for days1: "))
+days2 = int(input("Enter the value for days2: "))
+divergence = 1
+threshold = .00075
+above = True
 
 # Read the CSV data into a pandas DataFrame
 df = pd.read_csv(input_file)
@@ -31,8 +28,11 @@ for index, row in df.iterrows():
     dma2 = sum(latest_prices[-days2:]) / days2
 
     # Check if the crossover and percentage conditions are met
-    if (dma1 / dma2 > 1 - .0005) and (dma1 / dma2 < 1 + .0005):
-        selected_symbols.append([symbol])  # Store each symbol in a list
+    if (dma1 / dma2 > divergence-threshold) and (dma1 / dma2 < divergence+threshold):
+        if(above == True and dma1 > dma2):
+            selected_symbols.append([symbol])  # Store each symbol in a list
+        if(above == False and dma1 < dma2):
+            selected_symbols.append([symbol])  # Store each symbol in a list
 
 # Write the selected symbols to the result CSV file with each symbol in a separate row
 with open(output_file, 'w', newline='') as result_csv:
