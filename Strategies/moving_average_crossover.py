@@ -13,7 +13,7 @@ output_file = os.path.join('result.csv')
 # User-defined parameters
 days1 = 10
 days2 = 20
-percentage_threshold_1 = 0.01
+percentage_threshold_1 = 0.005
 percentage_threshold_2 = 0.015
 
 # Read the CSV data into a pandas DataFrame
@@ -25,12 +25,13 @@ selected_symbols = []
 # Iterate through the DataFrame to check for crossover and percentage condition
 for index, row in df.iterrows():
     symbol = row['SYMBOL']
-    dma1 = row.iloc[-days1]
-    dma2 = row.iloc[-days2]
-    value = dma1/dma2
-    print(dma1,dma2)
+    latest_prices = row.iloc[:].values[1:].astype(float)  # Extract the latest prices
+    # Calculate the moving averages
+    dma1 = sum(latest_prices[-days1:]) / days1
+    dma2 = sum(latest_prices[-days2:]) / days2
 
-    if (dma1 / dma2 < 1 + percentage_threshold_2) and (dma1 / dma2 > 1 + percentage_threshold_1):
+    # Check if the crossover and percentage conditions are met
+    if (dma1 / dma2 > 1 - .0005) and (dma1 / dma2 < 1 + .0005):
         selected_symbols.append([symbol])  # Store each symbol in a list
 
 # Write the selected symbols to the result CSV file with each symbol in a separate row
