@@ -27,6 +27,8 @@ for index, row in df.iterrows():
     symbol = row['SYMBOL']
     dma1 = row.iloc[-days1]
     dma2 = row.iloc[-days2]
+    value = dma1/dma2
+    print(dma1,dma2)
 
     if (dma1 / dma2 < 1 + percentage_threshold_2) and (dma1 / dma2 > 1 + percentage_threshold_1):
         selected_symbols.append([symbol])  # Store each symbol in a list
