@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 def momentum_genric_total(filename):
     # Read the CSV file into a DataFrame
@@ -35,4 +36,4 @@ def momentum_genric_total(filename):
     result_df.to_csv('result.csv', index=False)
 
 # Usage example:
-momentum_genric_total('/home/tapish/GM_Stocks/stock_data.csv')
+momentum_genric_total(os.path.join('..', 'stock_data.csv'))

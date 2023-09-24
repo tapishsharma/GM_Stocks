@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 def momentum_genric_simple(input_csv_file, output_csv_file, num_days):
     try:
@@ -25,7 +26,7 @@ def momentum_genric_simple(input_csv_file, output_csv_file, num_days):
         return False
 
 # Define the fixed input CSV file path
-input_csv_file = "/home/tapish/GM_Stocks/stock_data.csv"
+input_csv_file = os.path.join('..', 'stock_data.csv')
 
 # Ask the user to input the number of days
 num_days = int(input("Enter the number of days: "))
